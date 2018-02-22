@@ -1,0 +1,5 @@
+export const CART_ADD_ITEM = 'CART_ADD_ITEM'
+export const addItemToCart = id => ({
+  type: CART_ADD_ITEM,
+  id,
+})

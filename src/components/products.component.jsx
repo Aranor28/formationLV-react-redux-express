@@ -1,5 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux';
+import { addItemToCart } from '../actions/cart.actions';
 
 const ProductsPage = ({ productList, onAddProduct, onRemoveProduct }) => (
   <div>
@@ -22,4 +25,12 @@ ProductsPage.propTypes = {
   onRemoveProduct: PropTypes.func.isRequired,
 }
 
-export default ProductsPage;
+const mapStateToProps = state => ({
+  productList: state.products,
+})
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+  onAddProduct: addItemToCart,
+}, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductsPage);
